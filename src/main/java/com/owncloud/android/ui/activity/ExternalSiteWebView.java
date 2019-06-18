@@ -92,6 +92,9 @@ public class ExternalSiteWebView extends FileActivity {
         webview.setFocusable(true);
         webview.setFocusableInTouchMode(true);
         webview.setClickable(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
+        }
 
 
         // allow debugging (when building the debug version); see details in

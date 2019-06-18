@@ -41,6 +41,7 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.text.TextUtils;
 import android.view.WindowManager;
+import android.webkit.WebView;
 
 import com.evernote.android.job.JobManager;
 import com.evernote.android.job.JobRequest;
@@ -197,6 +198,10 @@ public class MainApp extends MultiDexApplication implements
             accountManager.migrateUserId();
         });
         t.start();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
+        }
 
         JobManager.create(this).addJobCreator(
             new NCJobCreator(
